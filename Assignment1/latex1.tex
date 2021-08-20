@@ -131,23 +131,30 @@ https://github.com/vaishnavi-w/EE3900/blob/main/Assignment1/latex1.tex
 Find a unit vector in the direction of the line passing through 
 $\myvec{-2\\4\\-5}$ and $\myvec{1\\2\\3}$
 \section{Solution}
-Let the points be $\vec{P}$ = $\myvec{-2\\4\\-5}$ and $\vec{Q}$ = $\myvec{1\\2\\3}$. \\
+Let the points be $\vec{P}$ = $\myvec{-2\\4\\-5}$ and $\vec{Q}$ = $\myvec{1\\2\\3}$
+
 The direction vector for the line through the points $\vec{P}$ and $\vec{Q}$ is
 \begin{align}
-    \vec{A} = \vec{P} - \vec{Q}\\
-    \implies \vec{A} = \myvec{-2\\4\\-5} - \myvec{1\\2\\3}\\
-    \implies \vec{A} = \myvec{-3\\2\\-8} \label{eq1}
+    \vec{A} = \vec{Q} - \vec{P}\\
+    \implies \vec{A} =  \myvec{1\\2\\3} - \myvec{-2\\4\\-5}\\
+    \implies \vec{A} = \myvec{3\\-2\\8} \label{eq1}
 \end{align}
 The unit vector is
 \begin{align}
-    \hat{\vec{A}} = \frac{\vec{A}}{||\vec{A}||}
+    \hat{\vec{A}} = \frac{\vec{A}}{\norm{\vec{A}}}
 \end{align}
 Also,
 \begin{align}
-    ||\boldsymbol{A}||=\sqrt{(-3)^{2} + (2)^{2} + (-8)^{2}}=\sqrt{77} \label{eq2}
+    \norm{\vec{A}}=\sqrt{(3)^{2} + (-2)^{2} + (8)^{2}}=\sqrt{77} \label{eq2}
 \end{align}
 Hence, from \eqref{eq1} and \eqref{eq2} we have
 \begin{align}
-    \hat{\vec{A}} = \myvec{\frac{-3}{\sqrt{77}}\\\frac{2}{\sqrt{77}}\\\frac{-8}{\sqrt{77}}}
+    \hat{\vec{A}} = \myvec{\frac{3}{\sqrt{77}}\\\frac{-2}{\sqrt{77}}\\\frac{8}{\sqrt{77}}}
 \end{align}
+\begin{figure}[!h]
+         \centering
+         \includegraphics[width=\columnwidth]{unit-vector.png}
+         \caption{Plot of line PQ and unit vector OA}
+         \label{plot}
+\end{figure}
 \end{document}
