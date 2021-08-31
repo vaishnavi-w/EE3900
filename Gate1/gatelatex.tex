@@ -88,6 +88,7 @@ columns=fullflexible
 \providecommand{\abs}[1]{\vert#1\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
 \providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\sinc}{sinc}
 %\providecommand{\norm}[1]{\lVert#1\rVert}
 \providecommand{\mtx}[1]{\mathbf{#1}}
 \providecommand{\mean}[1]{E[ #1 ]}
@@ -136,59 +137,58 @@ Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t}$
 \begin{lemma}
 Parseval's theorem states that there is no loss of information in Fourier transform and the amount of energy remains the same in time and frequency domains.
 \begin{align}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \frac{1}{2\pi}\int_{-\infty}^{\infty} |X\brak{\omega}|^{2} d\omega
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} d\omega
 \end{align}
 \end{lemma}
 Let,
 \begin{align}
-f\brak{t} =
+x\brak{t} =
     \begin{cases}
-    \frac{1}{4} & \text{if } |t| \leq 4\pi\\
-    0 & \text{if } |t| > 4\pi
+    \frac{1}{4} & \text{if } |t| \leq 2\\
+    0 & \text{if } |t| > 2
     \end{cases}\\
-    f\brak{t} \fourier{F} \brak{\omega}
+    x\brak{t} \fourier{X} \brak{f}
 \end{align}
-Finding the Fourier transform of $f\brak{t}$
+Finding the Fourier transform of $x\brak{t}$
 \begin{align}
-    F\brak{\omega} &= \int_{-\infty}^{\infty} f(t)e^{i\omega t}dt\\
-    &= \int_{-4\pi}^{4\pi}\frac{1}{4}e^{i\omega t}dt\\
-    &= \frac{e^{i4\pi\omega} - e^{-i4\pi\omega}}{4i\omega}\\
-    &= \frac{\sin{4\pi\omega}}{2\omega} 
+    X\brak{f} &= \int_{-\infty}^{\infty} x(t)e^{i2\pi ft}dt\\
+    &= \int_{-2}^{2}\frac{1}{4}e^{i2\pi ft}dt\\
+    &= \frac{e^{i4\pi f} - e^{-i8\pi\f}}{i4\pi f}\\
+    &= \sinc{\brak{4f}}
 \end{align}
 From Duality of Fourier transform, we have
 \begin{align}
-    f\brak{t} \fourier{F} \brak{\omega}\\
-    F\brak{t} \fourier2\pi{f} \brak{-\omega}
+    x\brak{t} \fourier{X} \brak{f}\\
+    X\brak{t} \fourier{x} \brak{-f}
 \end{align}
 \begin{align}
-    \implies \frac{\sin{4\pi t}}{2t} \fourier 2\pi f\brak{-\omega} \\
-    \implies \frac{\sin{4\pi t}}{4\pi t} \fourier f\brak{-\omega} 
+    \implies \sinc{\brak{4t}} \fourier x\brak{-f} 
 \end{align}
 \begin{align}
-    f\brak{-\omega} = f\brak{\omega} = 
+    x\brak{-f} = x\brak{f} = 
     \begin{cases}
-    \frac{1}{4} & \text{if } |\omega| \leq 4\pi\\
-    0 & \text{if } |\omega| > 4\pi
+    \frac{1}{4} & \text{if } |f| \leq 2\\
+    0 & \text{if } |f| > 2
     \end{cases}
 \end{align}
 Energy of the signal is given by,
 \begin{align}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \brak{\frac{\sin{4\pi t}}{4\pi t}} ^2 dt
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt
 \end{align}
 From Parseval's theorem, we have
 \begin{align}
-    \int_{-\infty}^{\infty} \brak{\frac{\sin{4\pi t}}{4\pi t}} ^2 dt &= \frac{1}{2\pi}\int_{-4\pi}^{4\pi} \frac{1}{4^{2}} d\omega\\
+    \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt &= \int_{-2}^{2} \frac{1}{4^{2}} df\\
     &= \frac{1}{4}
 \end{align}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{signal_time.png}
+\includegraphics[width=\columnwidth]{time.png}
 \caption{Plot of signal in Time domain}
 \label{fig:sig_time}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{signal_freq.png}
+\includegraphics[width=\columnwidth]{freq.png}
 \caption{Plot of signal in Frequency domain}
 \label{fig:sig_freq}
 \end{figure}
