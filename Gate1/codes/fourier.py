@@ -13,7 +13,7 @@ for i in range(N):
   
 fourier = [np.mean(y * np.exp( 1j * 2 * np.pi * f * x)) for f in x]
 
-# figure
+# figures
 plt.plot(x,y)
 plt.xlabel('f')
 plt.ylabel('X(f)')
@@ -23,4 +23,9 @@ plt.plot(x,np.real(fourier))
 plt.xlabel('t')
 plt.ylabel('x(t)')
 plt.title('Time domain')
+plt.show()
+plt.plot(x,y**2)
+plt.xlabel('f')
+plt.ylabel('$rect^{2}(f)$')
+plt.title('Square of rectangular function')
 plt.show()
