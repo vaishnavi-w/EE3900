@@ -132,7 +132,7 @@ and python codes from
 https://github.com/vaishnavi-w/EE3900/blob/main/Gate1/codes/fourier.py
 \end{lstlisting}
 \section{Gate EC 2016 Q.10}
-Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t}$
+Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t} = \sinc{\brak{4t}}$
 \section{Solution}
 \begin{lemma}
 Parseval's theorem states that there is no loss of information in Fourier transform and the amount of energy remains the same in time and frequency domains.
@@ -140,32 +140,43 @@ Parseval's theorem states that there is no loss of information in Fourier transf
     \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} df
 \end{align}
 \end{lemma}
-Let,
+Consider a rectangular function
 \begin{align}
-x\brak{t} =
+rect\brak{t} =
     \begin{cases}
     \frac{1}{4} & \text{if } |t| \leq 2\\
     0 & \text{if } |t| > 2
-    \end{cases}\\
-    x\brak{t} \fourier{X} \brak{f}
+    \end{cases}
 \end{align}
-Finding the Fourier transform of $x\brak{t}$
+Let the Fourier transform of $rect\brak{t}$ be given as $Y\brak{f}$
 \begin{align}
-    X\brak{f} &= \int_{-\infty}^{\infty} x(t)e^{i2\pi ft}dt\\
+    rect\brak{t} \fourier{Y} \brak{f}
+\end{align}
+Finding the Fourier transform,
+\begin{align}
+    Y\brak{f} &= \int_{-\infty}^{\infty} rect(t)e^{i2\pi ft}dt\\
     &= \int_{-2}^{2}\frac{1}{4}e^{i2\pi ft}dt\\
     &= \frac{e^{i4\pi f} - e^{-i4\pi f}}{i8\pi f}\\
     &= \sinc{\brak{4f}}
 \end{align}
-From Duality of Fourier transform, we have
+where $\sinc{\brak{t}}$ is defined as
 \begin{align}
-    x\brak{t} \fourier{X} \brak{f}\\
-    X\brak{t} \fourier{x} \brak{-f}
+\sinc{\brak{t}} =
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin{\pi t}}{\pi t} & otherwise
+    \end{cases}
+\end{align}
+For any signal $g\brak{t}$ and it's Fourier transform $G\brak{t}$, from Duality of Fourier transform, we have
+\begin{align}
+    g\brak{t} \fourier{G} \brak{f}\\
+    G\brak{t} \fourier{g} \brak{-f}
 \end{align}
 \begin{align}
-    \implies \sinc{\brak{4t}} \fourier x\brak{-f} 
+    \implies \sinc{\brak{4t}} \fourier rect\brak{-f} 
 \end{align}
 \begin{align}
-    x\brak{-f} = x\brak{f} = 
+    rect\brak{-f} = rect\brak{f} = 
     \begin{cases}
     \frac{1}{4} & \text{if } |f| \leq 2\\
     0 & \text{if } |f| > 2
@@ -177,19 +188,28 @@ Energy of the signal is given by,
 \end{align}
 From Parseval's theorem, we have
 \begin{align}
-    \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt &= \int_{-2}^{2} \frac{1}{4^{2}} df\\
-    &= \frac{1}{4}
+    \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt &= \int_{-\infty}^{\infty} rect^2{\brak{f}}  df
+\end{align}
+which is the area under the graph \ref{fig:rect_squared}
+\begin{align}
+    Area = 4 \times \frac{1}{4^2} = \frac{1}{4}
 \end{align}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{time.png}
+\includegraphics[width=\columnwidth]{time_signal.png}
 \caption{Plot of signal in Time domain}
 \label{fig:sig_time}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{freq.png}
+\includegraphics[width=\columnwidth]{freq_signal.png}
 \caption{Plot of signal in Frequency domain}
 \label{fig:sig_freq}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\columnwidth]{rect_squared.png}
+\caption{Plot of square of rectangular function}
+\label{fig:rect_squared}
 \end{figure}
 \end{document}
