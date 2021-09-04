@@ -167,7 +167,7 @@ where $\sinc{\brak{t}}$ is defined as
     \frac{\sin{\pi t}}{\pi t} & otherwise
     \end{cases}
 \end{align}
-For any signal $g\brak{t}$ and it's Fourier transform $G\brak{t}$, from Duality of Fourier transform, we have
+For any signal $g\brak{t}$ and it's Fourier transform $G\brak{f}$, from Duality of Fourier transform, we have
 \begin{align}
     g\brak{t} \fourier{G} \brak{f}\\
     G\brak{t} \fourier{g} \brak{-f}
@@ -182,14 +182,10 @@ For any signal $g\brak{t}$ and it's Fourier transform $G\brak{t}$, from Duality 
     0 & \text{if } |f| > 2
     \end{cases}
 \end{align}
-Energy of the signal is given by,
-\begin{align}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt
-\end{align}
-From Parseval's theorem, we have
-\begin{align}
-    \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt &= \int_{-\infty}^{\infty} rect^2{\brak{f}}  df
-\end{align}
+Energy of the signal using Parseval's thoerem,
+\begin{multline}
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt \\= \int_{-\infty}^{\infty} rect^2{\brak{f}}  df
+\end{multline}
 which is the area under the graph \ref{fig:rect_squared}
 \begin{align}
     Area = 4 \times \frac{1}{4^2} = \frac{1}{4}
