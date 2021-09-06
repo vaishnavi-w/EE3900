@@ -140,12 +140,12 @@ Parseval's theorem states that there is no loss of information in Fourier transf
     \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} df
 \end{align}
 \end{lemma}
-Consider a rectangular function
+Consider a unit rectangular function
 \begin{align}
 rect\brak{t} =
     \begin{cases}
-    \frac{1}{4} & \text{if } |t| \leq 2\\
-    0 & \text{if } |t| > 2
+    1 & \text{if } |t| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
     \end{cases}
 \end{align}
 Let the Fourier transform of $rect\brak{t}$ be given as $Y\brak{f}$
@@ -154,17 +154,17 @@ Let the Fourier transform of $rect\brak{t}$ be given as $Y\brak{f}$
 \end{align}
 Finding the Fourier transform,
 \begin{align}
-    Y\brak{f} &= \int_{-\infty}^{\infty} rect(t)e^{i2\pi ft}dt\\
-    &= \int_{-2}^{2}\frac{1}{4}e^{i2\pi ft}dt\\
-    &= \frac{e^{i4\pi f} - e^{-i4\pi f}}{i8\pi f}\\
-    &= \sinc{\brak{4f}}
+    Y\brak{f} &= \int_{-\infty}^{\infty} rect(t)e^{j2\pi ft}dt\\
+    &= \int_{\frac{-1}{2}}^{\frac{1}{2}}e^{j2\pi ft}dt\\
+    &= \frac{e^{j\pi f} - e^{-j\pi f}}{j2\pi f}\\
+    &= \sinc{\brak{f}}
 \end{align}
-where $\sinc{\brak{t}}$ is defined as
+where $\sinc{\brak{f}}$ is defined as
 \begin{align}
 \sinc{\brak{t}} =
     \begin{cases}
-    1 & t = 0\\
-    \frac{\sin{\pi t}}{\pi t} & otherwise
+    1 & f = 0\\
+    \frac{\sin{\pi f}}{\pi f} & otherwise
     \end{cases}
 \end{align}
 For any signal $g\brak{t}$ and it's Fourier transform $G\brak{f}$, from Duality of Fourier transform, we have
@@ -173,18 +173,37 @@ For any signal $g\brak{t}$ and it's Fourier transform $G\brak{f}$, from Duality 
     G\brak{t} \fourier{g} \brak{-f}
 \end{align}
 \begin{align}
-    \implies \sinc{\brak{4t}} \fourier rect\brak{-f} 
+    \implies \sinc{\brak{t}} \fourier rect\brak{-f} 
 \end{align}
 \begin{align}
     rect\brak{-f} = rect\brak{f} = 
     \begin{cases}
-    \frac{1}{4} & \text{if } |f| \leq 2\\
-    0 & \text{if } |f| > 2
+    1 & \text{if } |f| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
     \end{cases}
+\end{align}
+When a time signal $g\brak{t}$ is time scaled by $\alpha$, the resulting Fourier transform is given by:
+\begin{align}
+    g\brak{\alpha t} \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{f}{\alpha}}
+    \label{scale} \\
+    \implies \sinc{\brak{4t}} \fourier \frac{1}{4}rect\brak{\frac{f}{4}}
+\end{align}
+Fourier transform of $\sinc{\brak{4t}}$ is given as,
+\begin{align}
+    \frac{1}{4}rect\brak{\frac{f}{4}} = 
+    \begin{cases}
+    \frac{1}{4} & \big{|}\frac{f}{4}\big{|}\leq  \frac{1}{2}\\
+    0 & otherwise
+    \end{cases}
+     = 
+    \begin{cases}
+    \frac{1}{4} & |f| \leq  2\\
+    0 & otherwise
+     \end{cases}
 \end{align}
 Energy of the signal using Parseval's thoerem,
 \begin{multline}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt \\= \int_{-\infty}^{\infty} rect^2{\brak{f}}  df
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt \\= \int_{-\infty}^{\infty} \brak{\frac{1}{4}rect\brak{\frac{f}{4}}}^2  df
 \end{multline}
 which is the area under the graph \ref{fig:rect_squared}
 \begin{align}
@@ -204,8 +223,8 @@ which is the area under the graph \ref{fig:rect_squared}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{rect_squared.png}
-\caption{Plot of square of rectangular function}
+\includegraphics[width=\columnwidth]{freq_squared.png}
+\caption{Plot of square of signal in frequency domain}
 \label{fig:rect_squared}
 \end{figure}
 \end{document}
