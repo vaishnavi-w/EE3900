@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import scipy.fftpack
 N = 500
 
-# data
 x = np.linspace(-3,3, N)
 
+# Signal in frequency domain
 y = np.zeros(N)
 for i in range(N):
   if x[i] >= -2 and x[i] <= 2:
@@ -27,5 +27,5 @@ plt.show()
 plt.plot(x,y**2)
 plt.xlabel('f')
 plt.ylabel('$rect^{2}(f)$')
-plt.title('Square of rectangular function')
+plt.title('Square of signal in frequency domain')
 plt.show()
