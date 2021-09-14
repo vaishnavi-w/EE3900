@@ -142,45 +142,59 @@ https://github.com/vaishnavi-w/EE3900/blob/main/Assignment5/hyperbola.py
 \section{Quadratic Forms Q.30}
 Find the equation of a hyperbola with the vertices \myvec{0\\\pm \frac{\sqrt{11}}{2}} and foci \myvec{0\\\pm 3}
 \section{Solution}
-Let the foci be 
+\begin{lemma}
+The equation of  a conic with directrix $\vec{n}^{\top}\vec{x} = c$, eccentricity $e$ and focus $\vec{F}$ is given by 
 \begin{align}
-     \vec{C_1} =\myvec{0\\ 3},    \vec{C_2} = \myvec{0\\- 3}
-\end{align}
-and vertices
+    \label{eq:conic_quad_form}
+    \vec{x}^{\top}\vec{V}\vec{x}+2\vec{u}^{\top}\vec{x}+f=0
+    \end{align}
+where     
 \begin{align}
-     \vec{V_1} =\myvec{0\\ \frac{\sqrt{11}}{2}}, \vec{V_2} = \myvec{0\\ \frac{-\sqrt{11}}{2}}
+\label{eq:conic_quad_form_v}
+\vec{V} &=\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}, \\
+\label{eq:conic_quad_form_u}
+\vec{u} &= ce^2\vec{n}-\norm{\vec{n}}^2\vec{F}, \\
+\label{eq:conic_quad_form_f}
+f &= \norm{\vec{n}}^2\norm{\vec{F}}^2-c^2e^2
 \end{align}
-Let $\vec{x}$ be a point on the hyperbola. Then,
+\end{lemma}
+Solution : 
+Let the focus and vertex be,
 \begin{align}
-    xC_1 = \norm{\vec{x} - \vec{C_1}}\\
-    xC_2 = \norm{\vec{x} - \vec{C_2}}\\
-    V_1V_2 = \norm{\vec{V_1} - \vec{V_2}} = \sqrt{11}
+    \vec{F} =\myvec{0\\ 3}, \vec{V} =\myvec{0\\ \frac{\sqrt{11}}{2}}\\
+    \implies \norm{\vec{F}} = 3
 \end{align}
-Hyperbola is a set of points whose absolute difference of distances from two foci is a constant - the distance between vertices.
+Let $e$ be the eccentricity of the hyperbola and b the length of the semi-major axis. From observation,
 \begin{align}
-    |xC_1 - xC_2| = V_1V_2\\
-    \implies xC_1 = xC_2 \pm V_1V_2\\
-    \implies \norm{\vec{x} - \vec{C_1}} = \norm{\vec{x} - \vec{C_2}} \pm \norm{\vec{V_1} - \vec{V_2}}
+   b = \frac{\sqrt{11}}{2}, be = 3\\
+   \implies e = \frac{3}{\sqrt{11}/2} = \frac{6}{\sqrt{11}}
 \end{align}
-Squaring on both sides,
+The directrix of the hyperbola passes through the point $\myvec{0\\\frac{b}{e}} = \myvec{0\\\frac{11}{12}}$ and perpendicular to the y-axis. It is given as,
+\begin{align}
+    \myvec{0&1}\brak{\vec{x}-\myvec{0\\\frac{11}{12}}} = 0\\
+    \implies \myvec{0&1}\vec{x} = \frac{11}{12}
+\end{align}
+Comparing it with $\vec{n}^{\top}\vec{x} = c$
+\begin{align}
+    \vec{n} = \myvec{0\\1}, c = \frac{11}{12}\\
+    \implies \norm{\vec{n}} = 1
+\end{align}
+Calculating $\vec{V}, \vec{u}$ and $f$,
 \begin{multline}
-    \norm{\vec{x}}^2+\norm{\vec{C_1}}^2-2\vec{x}^\top \vec{C_1} = \norm{\vec{x}}^2+\\\norm{\vec{C_2}}^2-2\vec{x}^\top \vec{C_2} + 11 \pm 2\sqrt{11} \norm{\vec{x} - \vec{C_2}}
-\end{multline}    
-Substituting $\vec{C_2} = - \vec{C_1}$
-\begin{align}
-    4\vec{x}^\top \vec{C_1} + 11 = \mp 2\sqrt{11}\norm{\vec{x} + \vec{C_1}}
-\end{align}
-Squaring on both sides again and simplifing,
-\begin{multline}
-     16\vec{x}^\top \myvec{0\\3}\myvec{0&3}\vec{x} + 88\vec{x}^\top\vec{C_1} + 121 =\\ 44\vec{x}^\top\vec{x} + 88\vec{x}^\top\vec{C_1} + 396
+    \vec{V} = 1^2\myvec{1&0\\0&1} - \brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1}\myvec{0&1}\\
+    = \myvec{1&0\\0&\frac{-25}{11}}
 \end{multline}
 \begin{align}
-    16\vec{x}^\top\myvec{0&0\\0&9}\vec{x} = 44\vec{x}^\top\myvec{1&0\\0&1}\vec{x} + 275\\
-    \vec{x}^\top\myvec{44&0\\0&-100}\vec{x} + 275 = 0
+    \vec{u} = \frac{11}{12}\brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1} - 1^2\myvec{0\\3}=\myvec{0\\0}\\
+    f = 3^2 - \brak{\frac{11}{12}\times\frac{6}{\sqrt{11}}}^2 = \frac{25}{4}
+\end{align}
+Equation of the hyperbola,
+\begin{align}
+    \vec{x}^{\top}\myvec{1&0\\0&\frac{-25}{11}}\vec{x}+\frac{25}{4}=0
 \end{align}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\columnwidth]{hyperbolafig.png}
+\includegraphics[width=\columnwidth]{hyperbola.png}
 \label{fig:hyperbola}
 \caption{Plot of Hyperbola}
 \end{figure}
