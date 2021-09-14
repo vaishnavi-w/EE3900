@@ -29,9 +29,9 @@ plt.plot(xStandardRight[0,:],xStandardRight[1,:],color='b')
 
 # Plotting the foci and vertices
 plt.plot(A[0],A[1],'o',color='g')
-plt.text(0.5 ,3.5,'C1')
+plt.text(0.5 ,3.5,'F1')
 plt.plot(B[0],B[1],'o',color='g')
-plt.text(0.5 ,-3.5,'C2')
+plt.text(0.5 ,-3.5,'F2')
 plt.plot(C[0],C[1],'o',color='r')
 plt.text(0.5 ,1.8,'V1')
 plt.plot(D[0],D[1],'o',color='r')
