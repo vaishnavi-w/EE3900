@@ -142,36 +142,63 @@ https://github.com/vaishnavi-w/EE3900/blob/main/Assignment5/hyperbola.py
 \section{Quadratic Forms Q.30}
 Find the equation of a hyperbola with the vertices \myvec{0\\\pm \frac{\sqrt{11}}{2}} and foci \myvec{0\\\pm 3}
 \section{Solution}
-\begin{lemma}
+\begin{theorem}
 The equation of  a conic with directrix $\vec{n}^{\top}\vec{x} = c$, eccentricity $e$ and focus $\vec{F}$ is given by 
 \begin{align}
     \label{eq:conic_quad_form}
     \vec{x}^{\top}\vec{V}\vec{x}+2\vec{u}^{\top}\vec{x}+f=0
-    \end{align}
+\end{align}
 where     
 \begin{align}
-\label{eq:conic_quad_form_v}
-\vec{V} &=\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}, \\
-\label{eq:conic_quad_form_u}
-\vec{u} &= ce^2\vec{n}-\norm{\vec{n}}^2\vec{F}, \\
-\label{eq:conic_quad_form_f}
-f &= \norm{\vec{n}}^2\norm{\vec{F}}^2-c^2e^2
+    \label{eq:conic_quad_form_v}
+    \vec{V} &=\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}, \\
+    \label{eq:conic_quad_form_u}
+    \vec{u} &= ce^2\vec{n}-\norm{\vec{n}}^2\vec{F}, \\
+    \label{eq:conic_quad_form_f}
+    f &= \norm{\vec{n}}^2\norm{\vec{F}}^2-c^2e^2
 \end{align}
-\end{lemma}
-Solution : 
-Let the focus and vertex be,
+\end{theorem}
+\begin{theorem}
+    For $\abs{\vec{V}} \ne 0$, the length of the semi-major axis of the conic in \eqref{eq:conic_quad_form} is given by 
+    \begin{align} 
+        \sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
+        \label{eq:ab}
+    \end{align}
+\end{theorem}
+\begin{theorem}
+The eccentricity of conic \eqref{eq:conic_quad_form} is given by,
 \begin{align}
-    \vec{F} =\myvec{0\\ 3}, \vec{B} =\myvec{0\\ \frac{\sqrt{11}}{2}}\\
-    \implies \norm{\vec{F}} = 3
+    \label{eq:eccentricity} e = \sqrt{1 - \frac{\lambda_1}{\lambda_2}}
 \end{align}
-Let $e$ be the eccentricity of the hyperbola and b the length of the semi-major axis. From observation,
+\end{theorem}
+Solution: Let the equation of the hyperbola be
 \begin{align}
-   b = \frac{\sqrt{11}}{2}, be = 3\\
-   \implies e = \frac{3}{\sqrt{11}/2} = \frac{6}{\sqrt{11}}
+     \vec{x}^{\top}\vec{V}\vec{x}+2\vec{u}^{\top}\vec{x}+f=0
 \end{align}
-The directrix of the hyperbola passes through the point $\myvec{0\\\frac{b}{e}} = \myvec{0\\\frac{11}{12}}$ and perpendicular to the y-axis. It is given as,
+Let $\vec{B_1}, \vec{B_2}$ be the vertices and $\vec{F_1}, \vec{F_2}$ be the foci
 \begin{align}
-    \myvec{0&1}\brak{\vec{x}-\myvec{0\\\frac{11}{12}}} = 0\\
+    \norm{\vec{B_1}-\vec{B_2}} = \frac{\sqrt{11}}{2}\\
+    \norm{\vec{F_1}-\vec{F_2}} = 3
+\end{align}
+Distance between the vertices is equal to the length of the major axis. That gives,
+\begin{align}
+    \label{eq1} \norm{\vec{B_1}-\vec{B_2}} = 2\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
+\end{align}
+Distance between the foci given as,
+\begin{align}
+    \label{eq2} \norm{\vec{F_1}-\vec{F_2}} = 2\sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}}
+\end{align}
+Dividing \eqref{eq1} and \eqref{eq2} to get the eccentricity,
+\begin{align}
+    \sqrt{\frac{\lambda_2 - \lambda_1}{\lambda_2}} = \frac{6}{\sqrt{11}} = e
+\end{align}
+The directrix of the hyperbola is perpendicular to the y-axis and also passes through the point 
+\begin{align}
+    \myvec{0\\\frac{1}{e}\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}} = \myvec{0\\\frac{11}{12}}
+\end{align}
+Equation of the directrix can be given as
+\begin{align}
+    \myvec{0&1}\brak{x - \myvec{0\\\frac{11}{12}}} = 0\\
     \implies \myvec{0&1}\vec{x} = \frac{11}{12}
 \end{align}
 Comparing it with $\vec{n}^{\top}\vec{x} = c$
@@ -180,13 +207,11 @@ Comparing it with $\vec{n}^{\top}\vec{x} = c$
     \implies \norm{\vec{n}} = 1
 \end{align}
 Calculating $\vec{V}, \vec{u}$ and $f$,
-\begin{multline}
-    \vec{V} = 1^2\myvec{1&0\\0&1} - \brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1}\myvec{0&1}\\
-    = \myvec{1&0\\0&\frac{-25}{11}}
-\end{multline}
 \begin{align}
-    \vec{u} = \frac{11}{12}\brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1} - 1^2\myvec{0\\3}=\myvec{0\\0}\\
-    f = 3^2 - \brak{\frac{11}{12}\times\frac{6}{\sqrt{11}}}^2 = \frac{25}{4}
+    \vec{V} &= 1^2\myvec{1&0\\0&1} - \brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1}\myvec{0&1}\\
+    &= \myvec{1&0\\0&\frac{-25}{11}}\\
+     \vec{u} &= \frac{11}{12}\brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1} - 1^2\myvec{0\\3}=\myvec{0\\0}\\
+    f &= 3^2 - \brak{\frac{11}{12}\times\frac{6}{\sqrt{11}}}^2 = \frac{25}{4}
 \end{align}
 Equation of the hyperbola,
 \begin{align}
