@@ -6,7 +6,6 @@
 \usepackage[cmex10]{amsmath}
 
 \usepackage{amsthm}
-
 \usepackage{mathrsfs}
 \usepackage{txfonts}
 \usepackage{stfloats}
@@ -131,40 +130,33 @@ Download all latex-tikz codes from
 https://github.com/vaishnavi-w/EE3900/blob/main/Gate4/latex4.tex
 \end{lstlisting}
 \section*{Gate EC - 1997 Q1.4}
-The function $f(t)$ has the fourier transform $g(\omega)$. The fourier transform of $g(t) \brak{ \int_{-\infty}^{\infty} g(t) e^{-j\omega t} dt} = $
-\begin{enumerate}[label=\Alph*)]
-    \item $\frac{1}{2\pi}f\brak{\omega}$
-    \item $\frac{1}{2\pi}f\brak{-\omega}$
-    \item $2\pi f\brak{-\omega}$
-    \item None of the above
-\end{enumerate}
+The function $h(t)$ has the fourier transform $g(f)$. The fourier transform of $g(t) \brak{ \int_{-\infty}^{\infty} g(t) e^{-j2\pi f t} dt} = $
 \section*{Solution}
 \begin{lemma}
-\textbf{Duality Property} : Given a function $f(x)$ and it's fourier transform $g(\omega)$, the duality property of fourier transform says
+\textbf{Duality Property} : Given a function $h(x)$ and it's fourier transform $g(t)$, the duality property of fourier transform says
 \begin{align}
-    f\brak{t} \fourier{g} \brak{\omega}\\
-    g\brak{t} \fourier2\pi{f} \brak{-\omega}
+    h\brak{t} \fourier{g} \brak{f}\\
+    g\brak{t} \fourier{h} \brak{-f}
 \end{align}
 \end{lemma}
 \begin{proof}
-Given, the fourier transform of $f(t)$ is $g(\omega)$
+Given, the fourier transform of $h(t)$ is $g(f)$
 \begin{align}
-    g\brak{\omega} = \int_{-\infty}^{\infty} f\brak{t} e^{-j\omega t} dt
+    g\brak{f} = \int_{-\infty}^{\infty} h\brak{t} e^{-j2\pi ft} dt
 \end{align}
 The inverse fourier transform can be given as
 \begin{align}
-    f\brak{t} = \frac{1}{2\pi} \int_{-\infty}^{\infty} g\brak{\omega} e^{j\omega t} d\omega\\
-    \implies 2\pi f\brak{t} = \int_{-\infty}^{\infty} g\brak{\omega} e^{j\omega t} d\omega
+    h\brak{t} = \int_{-\infty}^{\infty} g\brak{f} e^{j2\pi ft} df
 \end{align}
 Putting $t = -t$
 \begin{align}
-    2\pi f\brak{-t} = \int_{-\infty}^{\infty} g\brak{\omega} e^{-j\omega t} d\omega
+    h\brak{-t} = \int_{-\infty}^{\infty} g\brak{f} e^{-j2\pi ft} df
 \end{align}
-Interchanging $t$ and $\omega$
+Interchanging $t$ and $f$
 \begin{align}
-    2\pi f\brak{-\omega} = \int_{-\infty}^{\infty} g\brak{t} e^{-j\omega t} dt
+    h\brak{-f} = \int_{-\infty}^{\infty} g\brak{t} e^{-j2\pi f t} dt
 \end{align}
-Thus, the fourier transform of $g\brak{t}$ is $2\pi f\brak{-\omega}$
+Thus, the fourier transform of $g\brak{t}$ is $h\brak{-f}$
 \end{proof}
 \textbf{Answer}: Option C
 
@@ -184,7 +176,7 @@ Consider,
 \end{align}
 Fourier transform of $f\brak{t}$,
 \begin{align}
-    \int_{-\infty}^{\infty} \delta\brak{t} e^{-j\omega t} dt = e^{-j\omega t}\big{|}_{t = 0} = 1
+    \int_{-\infty}^{\infty} \delta\brak{t} e^{-j2\pi ft} dt = e^{-j2\pi f t}\big{|}_{t = 0} = 1
 \end{align}
 Consider,
 \begin{align}
@@ -192,11 +184,11 @@ Consider,
 \end{align}
 It's fourier transform,
 \begin{align}
-    \int_{-\infty}^{\infty}1\times e^{-j\omega t} dt = 2\pi \delta\brak{-\omega}
+    \int_{-\infty}^{\infty}1\times e^{-j2 \pi f t} dt = \delta\brak{-f}
 \end{align}
 Thus, we have
 \begin{align}
     \delta\brak{t} \fourier 1\\
-    1 \fourier2\pi{\delta} \brak{-\omega}
+    1 \fourier{\delta} \brak{-f}
 \end{align}
 \end{document} 
