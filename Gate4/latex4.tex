@@ -167,4 +167,36 @@ Interchanging $t$ and $\omega$
 Thus, the fourier transform of $g\brak{t}$ is $2\pi f\brak{-\omega}$
 \end{proof}
 \textbf{Answer}: Option C
-\end{document}
+
+\textbf{Example :}
+
+The exponential representation of Dirac-Delta function is given as
+\begin{align}
+    \delta\brak{x-x_0} = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{j\brak{x-x_0}p} dp
+\end{align}
+Also, for any function $f\brak{x}$ that is continuous at $x = x_0$,
+\begin{align}
+    \int_{-\infty}^{\infty} f\brak{x}\delta\brak{x-x_0} dx = f\brak{x_0}
+\end{align}
+Consider,
+\begin{align}
+    f\brak{t} = \delta\brak{t}
+\end{align}
+Fourier transform of $f\brak{t}$,
+\begin{align}
+    \int_{-\infty}^{\infty} \delta\brak{t} e^{-j\omega t} dt = e^{-j\omega t}\big{|}_{t = 0} = 1
+\end{align}
+Consider,
+\begin{align}
+    g\brak{t} = 1
+\end{align}
+It's fourier transform,
+\begin{align}
+    \int_{-\infty}^{\infty}1\times e^{-j\omega t} dt = 2\pi \delta\brak{-\omega}
+\end{align}
+Thus, we have
+\begin{align}
+    \delta\brak{t} \fourier 1\\
+    1 \fourier2\pi{\delta} \brak{-\omega}
+\end{align}
+\end{document} 
