@@ -142,7 +142,7 @@ https://github.com/vaishnavi-w/EE3900/blob/main/Assignment5/hyperbola.py
 \section{Quadratic Forms Q.30}
 Find the equation of a hyperbola with the vertices \myvec{0\\\pm \frac{\sqrt{11}}{2}} and foci \myvec{0\\\pm 3}
 \section{Solution}
-\begin{theorem}
+\begin{lemma}
 The equation of  a conic with directrix $\vec{n}^{\top}\vec{x} = c$, eccentricity $e$ and focus $\vec{F}$ is given by 
 \begin{align}
     \label{eq:conic_quad_form}
@@ -157,20 +157,66 @@ where
     \label{eq:conic_quad_form_f}
     f &= \norm{\vec{n}}^2\norm{\vec{F}}^2-c^2e^2
 \end{align}
-\end{theorem}
-\begin{theorem}
+\end{lemma}
+\begin{lemma}
     For $\abs{\vec{V}} \ne 0$, the length of the semi-major axis of the conic in \eqref{eq:conic_quad_form} is given by 
     \begin{align} 
-        \sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
+        a = \sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
         \label{eq:ab}
     \end{align}
-\end{theorem}
-\begin{theorem}
+\end{lemma}
+\begin{lemma}
 The eccentricity of conic \eqref{eq:conic_quad_form} is given by,
 \begin{align}
     \label{eq:eccentricity} e = \sqrt{1 - \frac{\lambda_1}{\lambda_2}}
 \end{align}
-\end{theorem}
+\end{lemma}
+\begin{lemma}
+For $\abs{\vec{V}} \ne 0$, given vertices $B_1,B_2$ and foci $F_1,F_2$ eccentricity of conic \eqref{eq:conic_quad_form} is given by,
+\begin{align}
+    \label{eq:eccentricity} e = \frac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}}
+\end{align}
+\end{lemma}
+\begin{proof}
+Distance between the vertices is equal to the length of the major axis. That gives,
+\begin{align}
+    \label{eq1} \norm{\vec{B_1}-\vec{B_2}} = 2\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}} = 2a
+\end{align}
+Distance between the foci given as,
+\begin{align}
+    \label{eq2} \norm{\vec{F_1}-\vec{F_2}} = 2\sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}} = 2ae
+\end{align}
+Dividing \eqref{eq1} and \eqref{eq2},
+\begin{align}
+   \frac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}} = \sqrt{ \frac{\lambda_2 - \lambda_1}{\lambda_2}} = \sqrt{1 - \frac{\lambda_1}{\lambda_2}} = e
+\end{align}
+\end{proof}
+\begin{lemma}
+For $\abs{\vec{V}} \ne 0$, given vertices $B_1,B_2$ and foci $F_1,F_2$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
+\begin{align}
+    \vec{P} = \frac{\vec{F_1}+\vec{F_2}}{2} + \brak{\frac{\norm{\vec{B_1}-\vec{B_2}}}{\norm{\vec{F_1}-\vec{F_2}}}}^2 \frac{\brak{\vec{F_1}-\vec{F_2}}}{2}\\
+    \vec{n} = \vec{F_1}-\vec{F_2}
+\end{align}
+\end{lemma}
+\begin{proof}
+The directrix is perpendicular to the line joining foci. Thus normal vector for directrix is
+\begin{align}
+    \implies \vec{n} = \vec{F_1}-\vec{F_2}
+\end{align}
+Let $\vec{c}$ be the centre of the conic
+\begin{align}
+    \vec{c} = \frac{\vec{F_1}+\vec{F_2}}{2}
+\end{align}
+$\vec{m}$ is the unit direction vector of line joining the foci
+\begin{align}
+    \vec{m} = \frac{\vec{F_1}-\vec{F_2}}{\norm{\vec{F_1}-\vec{F_2}}}
+\end{align}
+The directrix passes through a point $\vec{P}$,
+\begin{align}
+    \vec{P} = \vec{c} + \vec{m}\frac{a}{e}
+\end{align}
+Substituting $a,e$ from \eqref{eq1}, \eqref{eq2} gives the lemma
+\end{proof}
 Solution: Let the equation of the hyperbola be
 \begin{align}
      \vec{x}^{\top}\vec{V}\vec{x}+2\vec{u}^{\top}\vec{x}+f=0
@@ -180,31 +226,23 @@ Let $\vec{B_1}, \vec{B_2}$ be the vertices and $\vec{F_1}, \vec{F_2}$ be the foc
     \norm{\vec{B_1}-\vec{B_2}} = \frac{\sqrt{11}}{2}\\
     \norm{\vec{F_1}-\vec{F_2}} = 3
 \end{align}
-Distance between the vertices is equal to the length of the major axis. That gives,
+From \eqref{eq:eccentricity} eccentricity,
 \begin{align}
-    \label{eq1} \norm{\vec{B_1}-\vec{B_2}} = 2\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
+    e = \frac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}} = \frac{6}{\sqrt{11}} 
 \end{align}
-Distance between the foci given as,
+Let $\vec{n}$ be the normal vector of directrix,
 \begin{align}
-    \label{eq2} \norm{\vec{F_1}-\vec{F_2}} = 2\sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}}
+    \vec{n} = \brak{\myvec{0\\3}-\myvec{0\\-3}} =  \myvec{0\\6}
 \end{align}
-Dividing \eqref{eq1} and \eqref{eq2} to get the eccentricity,
-\begin{align}
-    \sqrt{\frac{\lambda_2 - \lambda_1}{\lambda_2}} = \frac{6}{\sqrt{11}} = e
-\end{align}
-The directrix of the hyperbola is perpendicular to the y-axis and also passes through the point 
-\begin{align}
-    \myvec{0\\\frac{1}{e}\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}} = \myvec{0\\\frac{11}{12}}
-\end{align}
+The directrix passes through the point $\vec{P}$,
+\begin{multline}
+    \vec{P} = \frac{1}{2}\brak{\myvec{0\\3}+\myvec{0\\-3}}+\\
+    \brak{\frac{\sqrt{11}/2}{3}}^2 \frac{1}{2}\brak{\myvec{0\\3}-\myvec{0\\-3}}= \myvec{0\\\frac{11}{12}}
+\end{multline}
 Equation of the directrix can be given as
 \begin{align}
-    \myvec{0&1}\brak{x - \myvec{0\\\frac{11}{12}}} = 0\\
+    \myvec{0&6}\brak{x - \myvec{0\\\frac{11}{12}}} = 0\\
     \implies \myvec{0&1}\vec{x} = \frac{11}{12}
-\end{align}
-Comparing it with $\vec{n}^{\top}\vec{x} = c$
-\begin{align}
-    \vec{n} = \myvec{0\\1}, c = \frac{11}{12}\\
-    \implies \norm{\vec{n}} = 1
 \end{align}
 Calculating $\vec{V}, \vec{u}$ and $f$,
 \begin{align}
