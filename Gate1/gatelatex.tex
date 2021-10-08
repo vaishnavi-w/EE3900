@@ -124,107 +124,75 @@ columns=fullflexible
 Download all latex-tikz codes from 
 %
 \begin{lstlisting}
-https://github.com/vaishnavi-w/EE3900/blob/main/Gate1/gatelatex.tex
+https://github.com/vaishnavi-w/EE3900/blob/main/Gate3/latex3.tex
 \end{lstlisting}
-and python codes from 
-%
-\begin{lstlisting}
-https://github.com/vaishnavi-w/EE3900/blob/main/Gate1/codes/fourier.py
-\end{lstlisting}
-\section{Gate EC 2016 Q.10}
-Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t} = \sinc{\brak{4t}}$
-\section{Solution}
+\section*{Gate EC - 2001 Q1.21}
+If a signal $f(t)$ has energy $E$, the energy of the signal $f(2t)$ is equal to 
+\begin{enumerate}[label=\Alph*)]
+    \item $E$
+    \item $\frac{E}{2}$
+    \item $2E$
+    \item $4E$
+\end{enumerate}
+\section*{Solution}
+The energy of the signal $f(t)$ is given as.
+\begin{align}
+    E = \int_{-\infty}^{\infty} |f\brak{t}|^2 dt
+\end{align}
+The energy of signal $f(2t)$,
+\begin{align}
+    E' = \int_{-\infty}^{\infty} |f\brak{2t}|^2 dt
+\end{align}
+Putting $u = 2t$,
+\begin{align}
+    du = 2dt\\
+    E' = \int_{-\infty}^{\infty} |f\brak{u}|^2 \frac{du}{2} = \frac{E}{2}
+\end{align}
+\textbf{Answer}: Option B
+
+\section*{Example}
 \begin{lemma}
 Parseval's theorem states that there is no loss of information in Fourier transform and the amount of energy remains the same in time and frequency domains.
 \begin{align}
     \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} df
 \end{align}
 \end{lemma}
-Consider a unit rectangular function
+Consider a signal 
 \begin{align}
-rect\brak{t} =
+    f\brak{t} = \sinc{\brak{t}}\\
+    \sinc{\brak{t}} \fourier rect\brak{f}
+\end{align}
+where 
+\begin{align}
+\sinc{\brak{t}} =
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin{\pi t}}{\pi t} & otherwise
+    \end{cases}\\
+    rect\brak{t} =
     \begin{cases}
     1 & \text{if } |t| \leq \frac{1}{2}\\
     0 & \text{if } otherwise
     \end{cases}
 \end{align}
-Let the Fourier transform of $rect\brak{t}$ be given as $Y\brak{f}$
+Energy of the signal using Parseval's thoerem,
 \begin{align}
-    rect\brak{t} \fourier{Y} \brak{f}
+     \int_{-\infty}^{\infty} \sinc^2{\brak{t}}  dt &= \int_{-\infty}^{\infty} \brak{rect\brak{f}}^2  df \\
+     &= \int_{-\frac{1}{2}}^{\frac{1}{2}} df = 1
 \end{align}
-Finding the Fourier transform,
+Consider a signal,
 \begin{align}
-    Y\brak{f} &= \int_{-\infty}^{\infty} rect(t)e^{j2\pi ft}dt\\
-    &= \int_{\frac{-1}{2}}^{\frac{1}{2}}e^{j2\pi ft}dt\\
-    &= \frac{e^{j\pi f} - e^{-j\pi f}}{j2\pi f}\\
-    &= \sinc{\brak{f}}
-\end{align}
-where $\sinc{\brak{f}}$ is defined as
-\begin{align}
-\sinc{\brak{t}} =
-    \begin{cases}
-    1 & f = 0\\
-    \frac{\sin{\pi f}}{\pi f} & otherwise
-    \end{cases}
-\end{align}
-For any signal $g\brak{t}$ and it's Fourier transform $G\brak{f}$, from Duality of Fourier transform, we have
-\begin{align}
-    g\brak{t} \fourier{G} \brak{f}\\
-    G\brak{t} \fourier{g} \brak{-f}
-\end{align}
-\begin{align}
-    \implies \sinc{\brak{t}} \fourier rect\brak{-f} 
-\end{align}
-\begin{align}
-    rect\brak{-f} = rect\brak{f} = 
-    \begin{cases}
-    1 & \text{if } |f| \leq \frac{1}{2}\\
-    0 & \text{if } otherwise
-    \end{cases}
+    f\brak{2t} = \sinc{\brak{2t}}
 \end{align}
 When a time signal $g\brak{t}$ is time scaled by $\alpha$, the resulting Fourier transform is given by:
 \begin{align}
-    g\brak{\alpha t} \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{f}{\alpha}}
-    \label{scale} \\
-    \implies \sinc{\brak{4t}} \fourier \frac{1}{4}rect\brak{\frac{f}{4}}
+    \label{scale} g\brak{\alpha t} \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{f}{\alpha}}\\
+    \implies \sinc{\brak{2t}} \fourier\frac{1}{2}rect\brak{\frac{f}{2}}
 \end{align}
-Fourier transform of $\sinc{\brak{4t}}$ is given as,
+Energy of signal,
 \begin{align}
-    \frac{1}{4}rect\brak{\frac{f}{4}} = 
-    \begin{cases}
-    \frac{1}{4} & \big{|}\frac{f}{4}\big{|}\leq  \frac{1}{2}\\
-    0 & otherwise
-    \end{cases}
-     = 
-    \begin{cases}
-    \frac{1}{4} & |f| \leq  2\\
-    0 & otherwise
-     \end{cases}
+    E' &= \int_{-\infty}^{\infty} \sinc^2{\brak{2t}}  dt \\
+    &= \int_{-\infty}^{\infty} \brak{\frac{1}{2}rect\brak{\frac{f}{2}}}^2 df \\
+    &= \frac{1}{4}\int_{-1}^{1} df = \frac{1}{2} = \frac{E}{2}
 \end{align}
-Energy of the signal using Parseval's thoerem,
-\begin{multline}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt \\= \int_{-\infty}^{\infty} \brak{\frac{1}{4}rect\brak{\frac{f}{4}}}^2  df
-\end{multline}
-which is the area under the graph \ref{fig:rect_squared}
-\begin{align}
-    Area = 4 \times 0.0625 = \frac{1}{4}
-\end{align}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\columnwidth]{signal_time.png}
-\caption{Plot of signal in Time domain}
-\label{fig:sig_time}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\columnwidth]{signal_freq.png}
-\caption{Plot of signal in Frequency domain}
-\label{fig:sig_freq}
-\end{figure}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\columnwidth]{square_signal.png}
-\caption{Plot of square of signal in frequency domain}
-\label{fig:rect_squared}
-\end{figure}
 \end{document}
