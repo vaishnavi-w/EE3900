@@ -14,7 +14,7 @@
 \usepackage{cite}
 \usepackage{cases}
 \usepackage{subfig}
-
+\usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{multirow}
 
@@ -28,7 +28,6 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage{tkz-euclide}
-\usepackage{float}
 
 \usetikzlibrary{calc,math}
 \usepackage{listings}
@@ -44,10 +43,7 @@
 \usepackage{chngcntr}
 
 \DeclareMathOperator*{\Res}{Res}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Definition}[section]
+
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
@@ -67,7 +63,7 @@ breaklines=true,
 columns=fullflexible
 }
 \begin{document}
-
+\newtheorem{lemma}{Lemma}[section]
 \newcommand{\BEQA}{\begin{eqnarray}}
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
@@ -88,11 +84,11 @@ columns=fullflexible
 \providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
-\newtheorem*{remark}{Remark}
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\vert#1\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
 \providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\sinc}{sinc}
 %\providecommand{\norm}[1]{\lVert#1\rVert}
 \providecommand{\mtx}[1]{\mathbf{#1}}
 \providecommand{\mean}[1]{E[ #1 ]}
@@ -118,8 +114,8 @@ columns=fullflexible
      \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
      \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
 \vspace{3cm}
-\title{EE3900 - Gate Assignment 3}
-\author{W Vaishnavi - AI20BTECH11025}
+\title{EE3900-Gate Assignment}
+\author{W Vaishnavi\\AI20BTECH11025}
 \maketitle
 \newpage
 \bigskip
@@ -154,21 +150,49 @@ Putting $u = 2t$,
 \end{align}
 \textbf{Answer}: Option B
 
-\textbf{Example :}
-
+\section*{Example}
+\begin{lemma}
+Parseval's theorem states that there is no loss of information in Fourier transform and the amount of energy remains the same in time and frequency domains.
+\begin{align}
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} df
+\end{align}
+\end{lemma}
 Consider a signal 
 \begin{align}
-    f\brak{t} = e^{-t}u\brak{t}
+    f\brak{t} = \sinc{\brak{t}}\\
+    \sinc{\brak{t}} \fourier rect\brak{f}
 \end{align}
-Energy of the signal,
+where 
 \begin{align}
-    E = \int_{-\infty}^{\infty} |e^{-t}u\brak{t}|^2 dt = \int_{0}^{\infty}e^{-2t} dt = \frac{1}{2}
+\sinc{\brak{t}} =
+    \begin{cases}
+    1 & t = 0\\
+    \frac{\sin{\pi t}}{\pi t} & otherwise
+    \end{cases}\\
+    rect\brak{t} =
+    \begin{cases}
+    1 & \text{if } |t| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
+    \end{cases}
+\end{align}
+Energy of the signal using Parseval's thoerem,
+\begin{align}
+     \int_{-\infty}^{\infty} \sinc^2{\brak{t}}  dt &= \int_{-\infty}^{\infty} \brak{rect\brak{f}}^2  df \\
+     &= \int_{-\frac{1}{2}}^{\frac{1}{2}} df = 1
 \end{align}
 Consider a signal,
 \begin{align}
-    f\brak{2t} &= e^{-2t}u\brak{2t}\\
-    E' &= \int_{-\infty}^{\infty} |e^{-2t}u\brak{2t}|^2 dt \\
-    &= \int_{0}^{\infty}e^{-4t} dt\\
-    &= \frac{1}{4} = \frac{E}{2}
+    f\brak{2t} = \sinc{\brak{2t}}
+\end{align}
+When a time signal $g\brak{t}$ is time scaled by $\alpha$, the resulting Fourier transform is given by:
+\begin{align}
+    \label{scale} g\brak{\alpha t} \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{f}{\alpha}}\\
+    \implies \sinc{\brak{2t}} \fourier\frac{1}{2}rect\brak{\frac{f}{2}}
+\end{align}
+Energy of signal,
+\begin{align}
+    E' &= \int_{-\infty}^{\infty} \sinc^2{\brak{2t}}  dt \\
+    &= \int_{-\infty}^{\infty} \brak{\frac{1}{2}rect\brak{\frac{f}{2}}}^2 df \\
+    &= \frac{1}{4}\int_{-1}^{1} df = \frac{1}{2} = \frac{E}{2}
 \end{align}
 \end{document}
