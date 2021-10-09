@@ -189,28 +189,29 @@ Distance between the foci given as,
 Dividing \eqref{eq1} and \eqref{eq2} gives $e$
 \end{proof}
 \begin{lemma}
-For $\abs{\vec{V}} \ne 0$, given vertices $B_1,B_2$ and foci $F_1,F_2$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
+Given vertex $\vec{B}$ and focus $\vec{F}$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
 \begin{align}
-    \vec{P} = \frac{\vec{F_1}+\vec{F_2}}{2} + \brak{\frac{\norm{\vec{B_1}-\vec{B_2}}}{\norm{\vec{F_1}-\vec{F_2}}}}^2 \frac{\brak{\vec{F_1}-\vec{F_2}}}{2}\\
-    \vec{n} = \vec{F_1}-\vec{F_2}
+    \vec{P} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{e}\\
+    \vec{n} = \vec{B}-\vec{F}
 \end{align}
 \end{lemma}
 \begin{proof}
-The directrix is perpendicular to the line joining foci. Thus normal vector for directrix is
+The directrix is perpendicular to the line joining vertex and focus. Thus normal vector for directrix is
 \begin{align}
-    \implies \vec{n} = \vec{F_1}-\vec{F_2}
+    \implies \vec{n} = \vec{B}-\vec{F}
 \end{align}
-Let $\vec{c}$ be the centre of the conic
+$\vec{m}$ is the unit vector in the direction of $\vec{FB}$
 \begin{align}
-    \vec{c} = \frac{\vec{F_1}+\vec{F_2}}{2}
+    \vec{m} = \frac{\vec{B}-\vec{F}}{\norm{\vec{B}-\vec{F}}}
 \end{align}
-$\vec{m}$ is the unit direction vector of line joining the foci
+For $\abs{\vec{V}} = 0$, the vertex is the mid-point of line joining $\vec{P}$ and $\vec{F}$
 \begin{align}
-    \vec{m} = \frac{\vec{F_1}-\vec{F_2}}{\norm{\vec{F_1}-\vec{F_2}}}
+    \vec{B} = \frac{\vec{P}+\vec{F}}{2}\\
+    \vec{P} = 2\vec{B} + \vec{F} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{1}
 \end{align}
-The directrix passes through a point $\vec{P}$,
+For $\abs{\vec{V}} \ne 0$, the directrix passes through a point $\vec{P}$,
 \begin{align}
-    \vec{P} = \vec{c} + \vec{m}\frac{a}{e}
+    \vec{P} = \vec{B} + \vec{m}\frac{a\brak{1-e}}{e}
 \end{align}
 Substituting $a,e$ from \eqref{eq1}, \eqref{eq2} gives the lemma
 \end{proof}
@@ -227,18 +228,17 @@ From \eqref{eq:eccentricity} eccentricity,
 \begin{align}
     e = \frac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}} = \frac{6}{\sqrt{11}} 
 \end{align}
-Let $\vec{n}$ be the normal vector of directrix,
+Considering $\vec{B} = \myvec{0\\\frac{\sqrt{11}}{2}}, \vec{F} = \myvec{0\\3}$, the normal vector $\vec{n}$ of directrix
 \begin{align}
-    \vec{n} = \brak{\myvec{0\\3}-\myvec{0\\-3}} =  \myvec{0\\6}
+    \vec{n} = \brak{\myvec{0\\\frac{\sqrt{11}}{2}}-\myvec{0\\3}} =  \myvec{0\\\frac{\sqrt{11}-6}{2}}
 \end{align}
 The directrix passes through the point $\vec{P}$,
-\begin{multline}
-    \vec{P} = \frac{1}{2}\brak{\myvec{0\\3}+\myvec{0\\-3}}+\\
-    \brak{\frac{\sqrt{11}/2}{3}}^2 \frac{1}{2}\brak{\myvec{0\\3}-\myvec{0\\-3}}= \myvec{0\\\frac{11}{12}}
-\end{multline}
+\begin{align}
+    \vec{P} = \myvec{0\\\frac{\sqrt{11}}{2}} +\frac{\sqrt{11}}{6}\brak{\myvec{0\\\frac{\sqrt{11}}{2}}-\myvec{0\\3}}= \myvec{0\\\frac{11}{12}}
+\end{align}
 Equation of the directrix can be given as
 \begin{align}
-    \myvec{0&6}\brak{x - \myvec{0\\\frac{11}{12}}} = 0\\
+    \myvec{0&\frac{\sqrt{11-6}}{2}}\brak{x - \myvec{0\\\frac{11}{12}}} = 0\\
     \implies \myvec{0&1}\vec{x} = \frac{11}{12}
 \end{align}
 Calculating $\vec{V}, \vec{u}$ and $f$,
