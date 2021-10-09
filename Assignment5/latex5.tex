@@ -74,7 +74,7 @@ columns=fullflexible
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{example}{Example}[section]
 \newtheorem{definition}[problem]{Definition}
-
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \newcommand{\BEQA}{\begin{eqnarray}}
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
@@ -189,6 +189,13 @@ Distance between the foci given as,
 Dividing \eqref{eq1} and \eqref{eq2} gives $e$
 \end{proof}
 \begin{lemma}
+Distance between the closest vertex and focus 
+\begin{multline}
+    \label{eq3} \norm{\vec{B}-\vec{F}} = \abs*{ \frac{\norm{\vec{B_1}-\vec{B_2}}}{2} - \frac{\norm{\vec{F_1}-\vec{F_2}}}{2}}\\
+    = \abs*{\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}} - \sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}}}
+\end{multline}
+\end{lemma}
+\begin{lemma}
 Given vertex $\vec{B}$ and focus $\vec{F}$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
 \begin{align}
     \vec{P} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{e}\\
@@ -202,7 +209,7 @@ The directrix is perpendicular to the line joining vertex and focus. Thus normal
 \end{align}
 $\vec{m}$ is the unit vector in the direction of $\vec{FB}$
 \begin{align}
-    \vec{m} = \frac{\vec{B}-\vec{F}}{\norm{\vec{B}-\vec{F}}}
+    \label{unit_vec} \vec{m} = \frac{\vec{B}-\vec{F}}{\norm{\vec{B}-\vec{F}}}
 \end{align}
 For $\abs{\vec{V}} = 0$, the vertex is the mid-point of line joining $\vec{P}$ and $\vec{F}$
 \begin{align}
@@ -213,7 +220,7 @@ For $\abs{\vec{V}} \ne 0$, the directrix passes through a point $\vec{P}$,
 \begin{align}
     \vec{P} = \vec{B} + \vec{m}\frac{a\brak{1-e}}{e}
 \end{align}
-Substituting $a,e$ from \eqref{eq1}, \eqref{eq2} gives the lemma
+Substituting \eqref{eq3}, \eqref{unit_vec} gives the lemma
 \end{proof}
 Solution: Let the equation of the hyperbola be
 \begin{align}
@@ -244,7 +251,9 @@ Equation of the directrix can be given as
 Calculating $\vec{V}, \vec{u}$ and $f$,
 \begin{align}
     \vec{V} &= 1^2\myvec{1&0\\0&1} - \brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1}\myvec{0&1}\\
-    &= \myvec{1&0\\0&\frac{-25}{11}}\\
+    &= \myvec{1&0\\0&\frac{-25}{11}}
+\end{align}
+\begin{align}
      \vec{u} &= \frac{11}{12}\brak{\frac{6}{\sqrt{11}}}^2\myvec{0\\1} - 1^2\myvec{0\\3}=\myvec{0\\0}\\
     f &= 3^2 - \brak{\frac{11}{12}\times\frac{6}{\sqrt{11}}}^2 = \frac{25}{4}
 \end{align}
@@ -252,7 +261,7 @@ Equation of the hyperbola,
 \begin{align}
     \vec{x}^{\top}\myvec{1&0\\0&\frac{-25}{11}}\vec{x}+\frac{25}{4}=0
 \end{align}
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\columnwidth]{hyperbola_plot.png}
 \caption{Plot of Hyperbola}
