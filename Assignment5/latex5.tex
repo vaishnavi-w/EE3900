@@ -159,25 +159,30 @@ where
 \end{align}
 \end{lemma}
 \begin{lemma}
-    For $\abs{\vec{V}} \ne 0$, the length of the semi-major axis of the conic in \eqref{eq:conic_quad_form} is given by 
+    For $\abs{\vec{V}} \ne 0$, the length of the semi-major axis and eccentricity of the conic in \eqref{eq:conic_quad_form} are given by 
     \begin{align} 
-        a = \sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}
-        \label{eq:ab}
+        \label{eq:ab} a = \sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}}\\
+        \label{eq:eccentricity} e = \sqrt{1-\frac{\lambda_1}{\lambda_2}}
     \end{align}
 \end{lemma}
 \begin{lemma}
-The eccentricity of conic \eqref{eq:conic_quad_form} is given by,
+Given (closest, for $\abs{\vec{V}} \neq 0$) vertex $\vec{B}$ and focus $\vec{F}$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
 \begin{align}
-    \label{eq:eccentricity} e = \sqrt{1 - \frac{\lambda_1}{\lambda_2}}
+    \vec{P} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{e}\\
+    \vec{n} = \vec{B}-\vec{F}
 \end{align}
-\end{lemma}
-\begin{lemma}
-For $\abs{\vec{V}} \ne 0$, given vertices $B_1,B_2$ and foci $F_1,F_2$ eccentricity of conic \eqref{eq:conic_quad_form} is given by,
+and eccentricity
 \begin{align}
-    \label{eq:eccentricity} e = \frac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}}
+    \label{eq:eccentricity} e = 
+    \begin{cases}
+    1 & \abs{\vec{V}} = 0\\
+    \dfrac{\norm{\vec{F_1}-\vec{F_2}}}{\norm{\vec{B_1}-\vec{B_2}}} & \abs{\vec{V}} \neq 0
+    \end{cases}
 \end{align}
 \end{lemma}
 \begin{proof}
+For $\abs{\vec{V}}\neq 0$,
+
 Distance between the vertices is equal to the length of the major axis. That gives,
 \begin{align}
     \label{eq1} \norm{\vec{B_1}-\vec{B_2}} = 2\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}} = 2a
@@ -186,35 +191,25 @@ Distance between the foci given as,
 \begin{align}
     \label{eq2} \norm{\vec{F_1}-\vec{F_2}} = 2\sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}} = 2ae
 \end{align}
-Dividing \eqref{eq1} and \eqref{eq2} gives $e$
-\end{proof}
-\begin{lemma}
-Distance between the closest vertex and focus 
+Distance between the closest vertex and focus
 \begin{multline}
     \label{eq3} \norm{\vec{B}-\vec{F}} = \abs*{ \frac{\norm{\vec{B_1}-\vec{B_2}}}{2} - \frac{\norm{\vec{F_1}-\vec{F_2}}}{2}}\\
     = \abs*{\sqrt{\frac{\vec{u}^{\top}\vec{V}^{-1}\vec{u} -f}{\lambda_1}} - \sqrt{\frac{(\vec{u}^T\vec{V}^{-1}\vec{u}-f)(\lambda_2-\lambda_1)}{\lambda_1\lambda_2}}}
 \end{multline}
-\end{lemma}
-\begin{lemma}
-Given vertex $\vec{B}$ and focus $\vec{F}$ of conic \eqref{eq:conic_quad_form}, equation of directrix is given as $\vec{n}^{\top}\brak{\vec{x} - \vec{P}} = 0$ where
-\begin{align}
-    \vec{P} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{e}\\
-    \vec{n} = \vec{B}-\vec{F}
-\end{align}
-\end{lemma}
-\begin{proof}
+Dividing \eqref{eq1} and \eqref{eq2} gives $e$
+
 The directrix is perpendicular to the line joining vertex and focus. Thus normal vector for directrix is
 \begin{align}
     \implies \vec{n} = \vec{B}-\vec{F}
-\end{align}
-$\vec{m}$ is the unit vector in the direction of $\vec{FB}$
-\begin{align}
-    \label{unit_vec} \vec{m} = \frac{\vec{B}-\vec{F}}{\norm{\vec{B}-\vec{F}}}
 \end{align}
 For $\abs{\vec{V}} = 0$, the vertex is the mid-point of line joining $\vec{P}$ and $\vec{F}$
 \begin{align}
     \vec{B} = \frac{\vec{P}+\vec{F}}{2}\\
     \vec{P} = 2\vec{B} + \vec{F} = \vec{B} + \frac{\brak{\vec{B}-\vec{F}}}{1}
+\end{align}
+$\vec{m}$ is the unit vector in the direction of $\vec{FB}$
+\begin{align}
+    \label{unit_vec} \vec{m} = \frac{\vec{B}-\vec{F}}{\norm{\vec{B}-\vec{F}}}
 \end{align}
 For $\abs{\vec{V}} \ne 0$, the directrix passes through a point $\vec{P}$,
 \begin{align}
