@@ -88,6 +88,7 @@ columns=fullflexible
 \providecommand{\abs}[1]{\vert#1\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
 \providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\sinc}{sinc}
 %\providecommand{\norm}[1]{\lVert#1\rVert}
 \providecommand{\mtx}[1]{\mathbf{#1}}
 \providecommand{\mean}[1]{E[ #1 ]}
@@ -131,54 +132,82 @@ and python codes from
 https://github.com/vaishnavi-w/EE3900/blob/main/Gate1/codes/fourier.py
 \end{lstlisting}
 \section{Gate EC 2016 Q.10}
-Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t}$
+Find energy of the signal $x\brak{t} = \frac{sin\brak{4\pi t}}{4 \pi t} = \sinc{\brak{4t}}$
 \section{Solution}
 \begin{lemma}
 Parseval's theorem states that there is no loss of information in Fourier transform and the amount of energy remains the same in time and frequency domains.
 \begin{align}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \frac{1}{2\pi}\int_{-\infty}^{\infty} |X\brak{\omega}|^{2} d\omega
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} |X\brak{f}|^{2} df
 \end{align}
 \end{lemma}
-Let,
+Consider a unit rectangular function
 \begin{align}
-f\brak{t} =
+rect\brak{t} =
     \begin{cases}
-    \frac{1}{4} & \text{if } |t| \leq 4\pi\\
-    0 & \text{if } |t| > 4\pi
-    \end{cases}\\
-    f\brak{t} \fourier{F} \brak{\omega}
-\end{align}
-Finding the Fourier transform of $f\brak{t}$
-\begin{align}
-    F\brak{\omega} &= \int_{-\infty}^{\infty} f(t)e^{i\omega t}dt\\
-    &= \int_{-4\pi}^{4\pi}\frac{1}{4}e^{i\omega t}dt\\
-    &= \frac{e^{i4\pi\omega} - e^{-i4\pi\omega}}{4i\omega}\\
-    &= \frac{\sin{4\pi\omega}}{2\omega} 
-\end{align}
-From Duality of Fourier transform, we have
-\begin{align}
-    f\brak{t} \fourier{F} \brak{\omega}\\
-    F\brak{t} \fourier2\pi{f} \brak{-\omega}
-\end{align}
-\begin{align}
-    \implies \frac{\sin{4\pi t}}{2t} \fourier 2\pi f\brak{-\omega} \\
-    \implies \frac{\sin{4\pi t}}{4\pi t} \fourier f\brak{-\omega} 
-\end{align}
-\begin{align}
-    f\brak{-\omega} = f\brak{\omega} = 
-    \begin{cases}
-    \frac{1}{4} & \text{if } |\omega| \leq 4\pi\\
-    0 & \text{if } |\omega| > 4\pi
+    1 & \text{if } |t| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
     \end{cases}
 \end{align}
-Energy of the signal is given by,
+Let the Fourier transform of $rect\brak{t}$ be given as $Y\brak{f}$
 \begin{align}
-    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \brak{\frac{\sin{4\pi t}}{4\pi t}} ^2 dt
+    rect\brak{t} \fourier{Y} \brak{f}
 \end{align}
-From Parseval's theorem, we have
+Finding the Fourier transform,
 \begin{align}
-    \int_{-\infty}^{\infty} \brak{\frac{\sin{4\pi t}}{4\pi t}} ^2 dt &= \frac{1}{2\pi}\int_{-4\pi}^{4\pi} \frac{1}{4^{2}} d\omega\\
-    &= \frac{1}{4}
+    Y\brak{f} &= \int_{-\infty}^{\infty} rect(t)e^{j2\pi ft}dt\\
+    &= \int_{\frac{-1}{2}}^{\frac{1}{2}}e^{j2\pi ft}dt\\
+    &= \frac{e^{j\pi f} - e^{-j\pi f}}{j2\pi f}\\
+    &= \sinc{\brak{f}}
+\end{align}
+where $\sinc{\brak{f}}$ is defined as
+\begin{align}
+\sinc{\brak{t}} =
+    \begin{cases}
+    1 & f = 0\\
+    \frac{\sin{\pi f}}{\pi f} & otherwise
+    \end{cases}
+\end{align}
+For any signal $g\brak{t}$ and it's Fourier transform $G\brak{f}$, from Duality of Fourier transform, we have
+\begin{align}
+    g\brak{t} \fourier{G} \brak{f}\\
+    G\brak{t} \fourier{g} \brak{-f}
+\end{align}
+\begin{align}
+    \implies \sinc{\brak{t}} \fourier rect\brak{-f} 
+\end{align}
+\begin{align}
+    rect\brak{-f} = rect\brak{f} = 
+    \begin{cases}
+    1 & \text{if } |f| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
+    \end{cases}
+\end{align}
+When a time signal $g\brak{t}$ is time scaled by $\alpha$, the resulting Fourier transform is given by:
+\begin{align}
+    g\brak{\alpha t} \fourier \frac{1}{\abs{\alpha}}G\brak{\frac{f}{\alpha}}
+    \label{scale} \\
+    \implies \sinc{\brak{4t}} \fourier \frac{1}{4}rect\brak{\frac{f}{4}}
+\end{align}
+Fourier transform of $\sinc{\brak{4t}}$ is given as,
+\begin{align}
+    \frac{1}{4}rect\brak{\frac{f}{4}} = 
+    \begin{cases}
+    \frac{1}{4} & \big{|}\frac{f}{4}\big{|}\leq  \frac{1}{2}\\
+    0 & otherwise
+    \end{cases}
+     = 
+    \begin{cases}
+    \frac{1}{4} & |f| \leq  2\\
+    0 & otherwise
+     \end{cases}
+\end{align}
+Energy of the signal using Parseval's thoerem,
+\begin{multline}
+    \int_{-\infty}^{\infty} |x\brak{t}|^{2} dt = \int_{-\infty}^{\infty} \sinc^2{\brak{4t}}  dt \\= \int_{-\infty}^{\infty} \brak{\frac{1}{4}rect\brak{\frac{f}{4}}}^2  df
+\end{multline}
+which is the area under the graph \ref{fig:rect_squared}
+\begin{align}
+    Area = 4 \times 0.0625 = \frac{1}{4}
 \end{align}
 \begin{figure}[h!]
 \centering
@@ -191,5 +220,11 @@ From Parseval's theorem, we have
 \includegraphics[width=\columnwidth]{signal_freq.png}
 \caption{Plot of signal in Frequency domain}
 \label{fig:sig_freq}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\columnwidth]{signal_freq_squared.png}
+\caption{Plot of square of signal in frequency domain}
+\label{fig:rect_squared}
 \end{figure}
 \end{document}
