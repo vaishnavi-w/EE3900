@@ -95,6 +95,7 @@ columns=fullflexible
 %\providecommand{\norm}[1]{\lVert#1\rVert}
 \providecommand{\mtx}[1]{\mathbf{#1}}
 \providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\sinc}{sinc}
 \providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
 %\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
 \providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
@@ -159,36 +160,53 @@ Interchanging $t$ and $f$
 Thus, the fourier transform of $g\brak{t}$ is $h\brak{-f}$
 \end{proof}
 \textbf{Answer}: Option C
-
-\textbf{Example :}
-
-The exponential representation of Dirac-Delta function is given as
-\begin{align}
-    \delta\brak{x-x_0} = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{j\brak{x-x_0}p} dp
-\end{align}
-Also, for any function $f\brak{x}$ that is continuous at $x = x_0$,
-\begin{align}
-    \int_{-\infty}^{\infty} f\brak{x}\delta\brak{x-x_0} dx = f\brak{x_0}
-\end{align}
+\section*{Example}
 Consider,
 \begin{align}
-    f\brak{t} = \delta\brak{t}
+    h\brak{t} = rect\brak{t+1}
 \end{align}
-Fourier transform of $f\brak{t}$,
+where
 \begin{align}
-    \int_{-\infty}^{\infty} \delta\brak{t} e^{-j2\pi ft} dt = e^{-j2\pi f t}\big{|}_{t = 0} = 1
+\sinc{\brak{x}} =
+    \begin{cases}
+    1 & x = 0\\
+    \frac{\sin{\pi x}}{\pi x} & otherwise
+    \end{cases}\\
+rect\brak{x} =
+    \begin{cases}
+    1 & \text{if } |x| \leq \frac{1}{2}\\
+    0 & \text{if } otherwise
+    \end{cases}
 \end{align}
-Consider,
+Finding the Fourier transform of $h\brak{t}$,
 \begin{align}
-    g\brak{t} = 1
+    g\brak{f} &= \int_{-\infty}^{\infty} rect(t+1)e^{-j2\pi ft}dt\\
+    &= \int_{\frac{-3}{2}}^{\frac{-1}{2}}e^{-j2\pi ft}dt\\
+    &= \frac{e^{j\pi f} - e^{3j\pi f}}{-j2\pi f}\\
+    &= e^{j2\pi f}\sinc{\brak{f}}
 \end{align}
-It's fourier transform,
+Finding the inverse fourier transform of $h\brak{-f}$,
 \begin{align}
-    \int_{-\infty}^{\infty}1\times e^{-j2 \pi f t} dt = \delta\brak{-f}
+    G\brak{t} &= \int_{-\infty}^{\infty} rect(-f+1)e^{j2\pi ft}df\\
+    &= \int_{\frac{1}{2}}^{\frac{3}{2}}e^{j2\pi ft}df\\
+    &= \frac{e^{3j\pi t} - e^{j\pi t}}{j2\pi t}\\
+    &= e^{j2\pi t}\sinc{\brak{t}} = g\brak{t}
 \end{align}
-Thus, we have
+We have,
 \begin{align}
-    \delta\brak{t} \fourier 1\\
-    1 \fourier{\delta} \brak{-f}
+    rect\brak{t+1} \fourier e^{j2\pi f}\sinc{\brak{f}}\\
+    e^{j2\pi t}\sinc{\brak{t}} \fourier rect\brak{-t+1}
 \end{align}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{signal_h_t.png}
+    \caption{Plot of signals $h\brak{t}$ and $h\brak{-f}$}
+    \label{fig:figure1}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{signal_g_t.png}
+    \caption{Plot of amplitude and phase of signal $g\brak{f}$}
+    \label{fig:figure2}
+\end{figure}
 \end{document} 
